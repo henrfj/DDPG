@@ -25,7 +25,7 @@ class ReplayBuffer:
         # Position of first available memory index
         index = self.mem_cntr % self.mem_size
         # Save tranition values
-        self.state_memory[index] = state
+        self.state_memory[index] = state[0]
         self.new_state_memory[index] = new_state
         self.action_memory[index] = action
         self.reward_memory[index] = reward

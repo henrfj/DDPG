@@ -1,7 +1,7 @@
 import os # File path joining operation =>  model checkpoint
 import tensorflow as tf
-import tensorflow.keras as keras
-from tensorflow.keras.layers import Dense
+from tensorflow import keras
+from keras.layers import Dense
 
 
 class CriticNetwork(keras.Model):
@@ -26,7 +26,7 @@ class CriticNetwork(keras.Model):
 
     def call(self, state, action):
         # Forward pass of critic
-        action_value = self.fc1(tf.concat[state, action], axis=1) #0'th axis is the batch
+        action_value = self.fc1(tf.concat([state, action], axis=1)) #0'th axis is the batch
         action_value = self.fc2(action_value)
         q = self.q(action_value)
         return q
@@ -47,7 +47,7 @@ class ActorNetwork(keras.Model):
         #
         self.fc1 = Dense(self.fc1_dims, activation="relu")
         self.fc2 = Dense(self.fc2_dims, activation="relu")
-        self.q = Dense(self.n_actions, activation="tanh")
+        self.mu = Dense(self.n_actions, activation="tanh")
         """
         Want a bounded activation function between -1, +1, and then multiplying if we need more of environment.
         """ 
