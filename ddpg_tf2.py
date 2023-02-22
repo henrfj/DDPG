@@ -90,5 +90,5 @@ class Agent:
         self.target_actor.load_weights(self.target_actor.checkpoint_file)
         self.target_critic.load_weights(self.target_critic.checkpoint_file)
 
-    def choose_action(self):
-        ...
+    def choose_action(self, observation, evaluate=False):
+        state = tf.convert_to_tensor
